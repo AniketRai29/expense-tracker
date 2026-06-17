@@ -33,7 +33,15 @@ app.use(helmet());
 app.use(compression());
 
 // 🌐 CORS
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      process.env.CLIENT_URL,
+      "http://localhost:5173"
+    ],
+    credentials: true
+  })
+);
 
 // JSON parser
 app.use(express.json());
